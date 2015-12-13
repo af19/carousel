@@ -1,0 +1,95 @@
+$padding: 25px;
+$img-width: 612px;
+$img-height: 612px;
+
+body {
+  background-color: #FAFAFA;
+  margin: 0;
+  padding: $padding;
+
+}
+.carousel {
+  width: $img-width;
+  height: $img-height;
+  max-width: 100%;
+  position: relative;
+  margin: 0 auto;
+  // overflow: hidden;
+}
+img {
+  max-width: 100%;
+}
+
+.img-left {
+  position: absolute;
+  left: -100%;
+}
+
+.img-right {
+  position: absolute;
+  left: 100%;
+}
+
+.img-active {
+  position: absolute;
+  left: 0;
+}
+
+@keyframes slide-in-left {
+   100% { left: 0; }
+}
+
+.slide-in-left {
+  -webkit-animation: slide-in-left 2s forwards;
+  animation: slide-in-left 2s forwards;
+}
+
+@keyframes slide-in-right {
+   100% { left: 0; }
+}
+
+.slide-in-right {
+  -webkit-animation: slide-in-right 2s forwards;
+  animation: slide-in-right 2s forwards;
+}
+
+
+@keyframes slide-out-left {
+   100% { left: -100%; }
+}
+
+.slide-out-left {
+  -webkit-animation: slide-out-left 2s forwards;
+  animation: slide-out-left 2s forwards;
+}
+
+@keyframes slide-out-right {
+   100% { left: 100%; }
+}
+
+.slide-out-right {
+  -webkit-animation: slide-out-right 2s forwards;
+  animation: slide-out-right 2s forwards;
+}
+
+
+
+//
+// @keyframes slideOut {
+//    100% { left: 100%; }
+// }
+//
+// .slideOut {
+//   position: absolute;
+//   left: 0;
+//   -webkit-animation: slideOut 2s forwards;
+//   animation: slideOut 2s forwards;
+// }
+
+
+@media (max-width: (2 * $padding) + $img-width) {
+  .carousel {
+    height: 0;
+    padding-bottom: 100%;
+  }
+}
