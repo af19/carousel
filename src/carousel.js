@@ -32,22 +32,15 @@ $(document).ready(function() {
       imgRightSrc = carouselImages[activeImgIndex + 1];
     }
 
-
-
-
     imgElements = '<img src="' + imgLeftSrc + '" class="img-left">';
     imgElements += '<img src="' + imgActiveSrc + '" class="img-active"';
     imgElements += 'data-active-index="' + activeImgIndex + '">'
     imgElements += '<img src="' + imgRightSrc + '" class="img-right">';
 
     return imgElements;
-
   }
 
   $('.carousel').html( carouselInnerHTML(0) );
-
-
-
 
   function advanceRight() {
     var currentActiveIndex = $('.img-active').data('active-index');
@@ -57,24 +50,29 @@ $(document).ready(function() {
     $('.img-active').addClass('slide-out-left');
     $('.img-right').addClass('slide-in-left');
 
-
     $('.slide-out-left').on('animationend', function() {
       $('.carousel').html( carouselInnerHTML(nextIndex) );
       $('.advance-right').bind('click', advanceRight);
     });
-
-
   }
   $('.advance-right').bind('click', advanceRight);
 
-  $('.advance-left').click(function() {
+  function advanceLeft() {
+    var currentActiveIndex = $('.img-active').data('active-index');
+    console.log(currentActiveIndex);
+    var nextIndex = currentActiveIndex === 0 ? totalCarouselImages - 1 : currentActiveIndex - 1;
+    console.log(nextIndex);
+    $('.advance-left').unbind('click');
     $('.img-active').addClass('slide-out-right');
     $('.img-left').addClass('slide-in-right');
 
-
-    $('.slide-out-left').on('animationend', function() {
-      $('.carousel').html( carouselInnerHTML(nextIndexLeft) );
+    $('.slide-out-right').on('animationend', function() {
+      $('.carousel').html( carouselInnerHTML(nextIndex) );
+      $('.advance-left').bind('click', advanceLeft);
     });
-  });
+  }
+
+  $('.advance-left').bind('click', advanceLeft);
+
 
 });
