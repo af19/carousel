@@ -3,6 +3,7 @@
 // });
 $(document).ready(function() {
 
+  // Image collection.
   var carouselImages = [
     "src/img/img1.jpg",
     "src/img/img2.jpg",
@@ -13,6 +14,13 @@ $(document).ready(function() {
 
   var totalCarouselImages = carouselImages.length;
 
+  /**
+  * Images are added to the carousel here.
+  * Three images (active, right and left) are added, relative to the index of   * the currently active image.
+  *
+  * @param {Integer} activeImgIndex
+  * @return {String} imgElements
+  */
   function carouselInnerHTML(activeImgIndex) {
 
     var imgActiveSrc = carouselImages[activeImgIndex];
@@ -20,12 +28,14 @@ $(document).ready(function() {
     var imgLeftSrc;
     var imgElements;
 
+    // If at start, set the last image in the collection as the left image.
     if (activeImgIndex === 0) {
       imgLeftSrc = carouselImages[totalCarouselImages - 1];
     } else {
       imgLeftSrc = carouselImages[activeImgIndex - 1];
     }
 
+    // If at end, set the first image in the collection as the right image.
     if (activeImgIndex === totalCarouselImages - 1) {
       imgRightSrc = carouselImages[0];
     } else {
@@ -40,6 +50,7 @@ $(document).ready(function() {
     return imgElements;
   }
 
+  // Start carousel on page load.
   $('.carousel').html( carouselInnerHTML(0) );
 
   function advanceRight() {
