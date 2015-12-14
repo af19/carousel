@@ -117,7 +117,11 @@ body {
 }
 
 @keyframes slide-out-left {
-   100% { left: -100%; }
+  100% {
+    left: -100%;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+  }
 }
 
 .slide-out-left {
@@ -126,7 +130,11 @@ body {
 }
 
 @keyframes slide-out-right {
-   100% { left: 100%; }
+  100% {
+    left: 100%;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+  }
 }
 
 .slide-out-right {
@@ -143,5 +151,10 @@ body {
       font-size: .95em;
       padding: $padding / 3;
     }
+  }
+
+  .carousel-indicators {
+    left: 15%;
+    width: 70%;
   }
 }

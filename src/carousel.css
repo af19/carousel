@@ -82,14 +82,18 @@ body {
 
 @keyframes slide-out-left {
   100% {
-    left: -100%; } }
+    left: -100%;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%); } }
 .slide-out-left {
   -webkit-animation: slide-out-left 1s ease-in-out;
   animation: slide-out-left 1s ease-in-out; }
 
 @keyframes slide-out-right {
   100% {
-    left: 100%; } }
+    left: 100%;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%); } }
 .slide-out-right {
   -webkit-animation: slide-out-right 1s ease-in-out;
   animation: slide-out-right 1s ease-in-out; }
@@ -100,6 +104,10 @@ body {
     padding-bottom: 100%; }
     .carousel-images .button > a, .carousel-container .button > a {
       font-size: .95em;
-      padding: 8.33333px; } }
+      padding: 8.33333px; }
+
+  .carousel-indicators {
+    left: 15%;
+    width: 70%; } }
 
 /*# sourceMappingURL=carousel.css.map */
