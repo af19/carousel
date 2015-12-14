@@ -122,10 +122,21 @@ $(document).ready(function() {
   $('.advance-right').bind('click', advanceRight);
   $('.advance-left').bind('click', advanceLeft);
 
+
   $('.carousel-indicators > div').click(function() {
     $('.carousel-indicators').find('.active').removeClass();
     $(this).addClass('active');
     $('.carousel-images').html( carouselInnerHTML( $(this).index() ));
   });
+
+  var autoAdvance = setInterval(advanceRight, 3000);
+
+  $('.carousel-container').hover(
+    function() {
+      clearInterval(autoAdvance);
+    }, function() {
+      autoAdvance = setInterval(advanceRight, 3000);
+  }
+);
 
 });
