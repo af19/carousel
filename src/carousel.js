@@ -28,15 +28,16 @@ $(document).ready(function() {
 
     if (activeImgIndex === totalCarouselImages - 1) {
       imgRightSrc = carouselImages[0];
-      nextIndex = 0;
     } else {
       imgRightSrc = carouselImages[activeImgIndex + 1];
-      nextIndex = activeImgIndex + 1;
     }
 
+
+
+
     imgElements = '<img src="' + imgLeftSrc + '" class="img-left">';
-    imgElements += '<img src="' + imgActiveSrc + '" class="img-active">';
-    // imgElements += 'data-next-index-right="' + nextIndexRight + '"data-next-index-left="' + nextIndexLeft + '">'
+    imgElements += '<img src="' + imgActiveSrc + '" class="img-active"';
+    imgElements += 'data-active-index="' + activeImgIndex + '">'
     imgElements += '<img src="' + imgRightSrc + '" class="img-right">';
 
     return imgElements;
@@ -45,12 +46,17 @@ $(document).ready(function() {
 
   $('.carousel').html( carouselInnerHTML(0) );
 
-var nextIndex;
+
+
 
   function advanceRight() {
+    var currentActiveIndex = $('.img-active').data('active-index');
+    console.log(currentActiveIndex);
+    var nextIndex = currentActiveIndex === totalCarouselImages - 1 ? 0 : currentActiveIndex + 1;
     $('.advance-right').unbind('click');
     $('.img-active').addClass('slide-out-left');
     $('.img-right').addClass('slide-in-left');
+
 
     $('.slide-out-left').on('animationend', function() {
       $('.carousel').html( carouselInnerHTML(nextIndex) );
@@ -67,7 +73,7 @@ var nextIndex;
 
 
     $('.slide-out-left').on('animationend', function() {
-      $('.carousel').html( carouselInnerHTML(nextIndex) );
+      $('.carousel').html( carouselInnerHTML(nextIndexLeft) );
     });
   });
 
