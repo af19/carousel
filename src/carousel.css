@@ -3,21 +3,31 @@ body {
   margin: 0;
   padding: 25px; }
 
-.container {
+.carousel-container {
   position: relative;
-  border: 1px solid red;
   width: 612px;
   height: 612px;
   margin: 0 auto;
   max-width: 100%; }
 
-.carousel {
+.carousel-images {
   width: 612px;
   height: 612px;
   max-width: 100%;
   position: relative;
   margin: 0 auto;
   overflow: hidden; }
+  .carousel-images img {
+    max-width: 100%; }
+  .carousel-images .img-left {
+    position: absolute;
+    left: -100%; }
+  .carousel-images .img-right {
+    position: absolute;
+    left: 100%; }
+  .carousel-images .img-active {
+    position: absolute;
+    left: 0; }
 
 .carousel-control {
   position: absolute;
@@ -35,23 +45,23 @@ body {
       color: #FAFAFA;
       padding: 12.5px;
       background-color: rgba(20, 26, 37, 0.7); }
-  .carousel-control .button:nth-child(2) {
-    text-align: right; }
+    .carousel-control .button:nth-child(2) {
+      text-align: right; }
 
-img {
-  max-width: 100%; }
-
-.img-left {
+.carousel-dots {
   position: absolute;
-  left: -100%; }
-
-.img-right {
-  position: absolute;
-  left: 100%; }
-
-.img-active {
-  position: absolute;
-  left: 0; }
+  bottom: 5%;
+  left: 25%;
+  width: 50%;
+  display: flex; }
+  .carousel-dots div {
+    border: 1px solid #FAFAFA;
+    background-color: rgba(20, 26, 37, 0.7);
+    height: 15px;
+    width: 15px;
+    margin: 0 auto; }
+    .carousel-dots div:hover {
+      cursor: pointer; }
 
 @keyframes slide-in-left {
   100% {
@@ -82,10 +92,10 @@ img {
   animation: slide-out-right 1s ease-in-out; }
 
 @media (max-width: 662px) {
-  .carousel, .container {
+  .carousel-images, .carousel-container {
     height: 0;
     padding-bottom: 100%; }
-    .carousel .button > a, .container .button > a {
+    .carousel-images .button > a, .carousel-container .button > a {
       font-size: .95em;
       padding: 8.33333px; } }
 

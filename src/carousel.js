@@ -52,7 +52,7 @@ $(document).ready(function() {
   }
 
   // Start carousel on page load.
-  $('.carousel').html( carouselInnerHTML(0) );
+  $('.carousel-images').html( carouselInnerHTML(0) );
 
   /**
   * Depending on advance direction, get index for generating the next set of    * three images.
@@ -84,7 +84,7 @@ $(document).ready(function() {
 
     // Wait for CSS animation to end, before getting new images.
     $('.slide-out-left').on('animationend', function() {
-      $('.carousel').html( carouselInnerHTML( nextThree('right') ) );
+      $('.carousel-images').html( carouselInnerHTML( nextThree('right') ) );
       $('.advance-right').bind('click', advanceRight);
     });
   }
@@ -96,7 +96,7 @@ $(document).ready(function() {
     $('.img-left').addClass('slide-in-right');
 
     $('.slide-out-right').on('animationend', function() {
-      $('.carousel').html( carouselInnerHTML( nextThree('left') ) );
+      $('.carousel-images').html( carouselInnerHTML( nextThree('left') ) );
       $('.advance-left').bind('click', advanceLeft);
     });
   }

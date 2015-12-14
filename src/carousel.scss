@@ -3,29 +3,48 @@ $img-width: 612px;
 $img-height: 612px;
 $black: #251F14;
 $white: #FAFAFA;
+$text-background: rgba(complement($black), .7);
 
 body {
   background-color: $white;
   margin: 0;
   padding: $padding;
-
 }
-.container {
+
+.carousel-container {
   position: relative;
-  border: 1px solid red;
   width: $img-width;
   height: $img-height;
   margin: 0 auto;
   max-width: 100%;
-
 }
-.carousel {
+
+.carousel-images {
   width: $img-width;
   height: $img-height;
   max-width: 100%;
   position: relative;
   margin: 0 auto;
   overflow: hidden;
+
+  img {
+    max-width: 100%;
+  }
+
+  .img-left {
+    position: absolute;
+    left: -100%;
+  }
+
+  .img-right {
+    position: absolute;
+    left: 100%;
+  }
+
+  .img-active {
+    position: absolute;
+    left: 0;
+  }
 }
 
 .carousel-control {
@@ -45,34 +64,33 @@ body {
       font-size: 1.5em;
       color: $white;
       padding: $padding / 2;
-      background-color: rgba(complement($black), .7);
+      background-color: $text-background;
+    }
 
+    &:nth-child(2) {
+      text-align: right;
     }
   }
+}
 
-  .button:nth-child(2) {
-    text-align: right;
+.carousel-dots {
+  position: absolute;
+  bottom: 5%;
+  left: 25%;
+  width: 50%;
+  display: flex;
 
+  div {
+    border: 1px solid $white;
+    background-color: $text-background;
+    height: 15px;
+    width: 15px;
+    margin: 0 auto;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
-
-}
-img {
-  max-width: 100%;
-}
-
-.img-left {
-  position: absolute;
-  left: -100%;
-}
-
-.img-right {
-  position: absolute;
-  left: 100%;
-}
-
-.img-active {
-  position: absolute;
-  left: 0;
 }
 
 @keyframes slide-in-left {
@@ -93,7 +111,6 @@ img {
   animation: slide-in-right 1s ease-in-out;
 }
 
-
 @keyframes slide-out-left {
    100% { left: -100%; }
 }
@@ -112,9 +129,8 @@ img {
   animation: slide-out-right 1s ease-in-out;
 }
 
-
 @media (max-width: (2 * $padding) + $img-width) {
-  .carousel, .container {
+  .carousel-images, .carousel-container {
     height: 0;
     padding-bottom: 100%;
 
@@ -123,5 +139,4 @@ img {
       padding: $padding / 3;
     }
   }
-
 }
