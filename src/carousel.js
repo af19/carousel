@@ -68,7 +68,7 @@ $(document).ready(function() {
   $('.carousel-indicators > div').eq(0).addClass('active');
 
   /**
-  * Depending on advance direction, get index for generating the next set of    * three images.
+  * Depending on advance direction, get index for generating the next set of    * three images. And change color of indicators.
   *
   * @param {String} advanceDirection
   * @return {Integer} nextIndex
@@ -87,7 +87,6 @@ $(document).ready(function() {
     }
 
     $('.carousel-indicators > div').eq(currentActiveIndex).removeClass('active');
-
     $('.carousel-indicators > div').eq(nextIndex).addClass('active');
 
     return nextIndex;
@@ -123,5 +122,10 @@ $(document).ready(function() {
   $('.advance-right').bind('click', advanceRight);
   $('.advance-left').bind('click', advanceLeft);
 
+  $('.carousel-indicators > div').click(function() {
+    $('.carousel-indicators').find('.active').removeClass();
+    $(this).addClass('active');
+    $('.carousel-images').html( carouselInnerHTML( $(this).index() ));
+  });
 
 });
