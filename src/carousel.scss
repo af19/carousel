@@ -1,11 +1,22 @@
 $padding: 25px;
 $img-width: 612px;
 $img-height: 612px;
+$black: #251F14;
+$white: #FAFAFA;
 
 body {
-  background-color: #FAFAFA;
+  background-color: $white;
   margin: 0;
   padding: $padding;
+
+}
+.container {
+  position: relative;
+  border: 1px solid red;
+  width: $img-width;
+  height: $img-height;
+  margin: 0 auto;
+  max-width: 100%;
 
 }
 .carousel {
@@ -15,6 +26,35 @@ body {
   position: relative;
   margin: 0 auto;
   overflow: hidden;
+}
+
+.carousel-control {
+  position: absolute;
+  display: flex;
+  top: 70%;
+  left: 0;
+  width: 100%;
+
+  .button {
+    width: 50%;
+
+    a {
+      font-family: 'helvetica', sans-serif;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 1.5em;
+      color: $white;
+      padding: $padding / 2;
+      background-color: rgba(complement($black), .7);
+
+    }
+  }
+
+  .button:nth-child(2) {
+    text-align: right;
+
+  }
+
 }
 img {
   max-width: 100%;
@@ -40,8 +80,8 @@ img {
 }
 
 .slide-in-left {
-  -webkit-animation: slide-in-left 2s forwards;
-  animation: slide-in-left 2s forwards;
+  -webkit-animation: slide-in-left 1s ease-in-out;
+  animation: slide-in-left 1s fease-in-out;
 }
 
 @keyframes slide-in-right {
@@ -49,8 +89,8 @@ img {
 }
 
 .slide-in-right {
-  -webkit-animation: slide-in-right 2s forwards;
-  animation: slide-in-right 2s forwards;
+  -webkit-animation: slide-in-right 1s ease-in-out;
+  animation: slide-in-right 1s ease-in-out;
 }
 
 
@@ -59,8 +99,8 @@ img {
 }
 
 .slide-out-left {
-  -webkit-animation: slide-out-left 2s forwards;
-  animation: slide-out-left 2s forwards;
+  -webkit-animation: slide-out-left 1s ease-in-out;
+  animation: slide-out-left 1s ease-in-out;
 }
 
 @keyframes slide-out-right {
@@ -68,28 +108,20 @@ img {
 }
 
 .slide-out-right {
-  -webkit-animation: slide-out-right 2s forwards;
-  animation: slide-out-right 2s forwards;
+  -webkit-animation: slide-out-right 1s ease-in-out;
+  animation: slide-out-right 1s ease-in-out;
 }
 
 
-
-//
-// @keyframes slideOut {
-//    100% { left: 100%; }
-// }
-//
-// .slideOut {
-//   position: absolute;
-//   left: 0;
-//   -webkit-animation: slideOut 2s forwards;
-//   animation: slideOut 2s forwards;
-// }
-
-
 @media (max-width: (2 * $padding) + $img-width) {
-  .carousel {
+  .carousel, .container {
     height: 0;
     padding-bottom: 100%;
+
+    .button > a {
+      font-size: .95em;
+      padding: $padding / 3;
+    }
   }
+
 }

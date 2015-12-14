@@ -3,6 +3,14 @@ body {
   margin: 0;
   padding: 25px; }
 
+.container {
+  position: relative;
+  border: 1px solid red;
+  width: 612px;
+  height: 612px;
+  margin: 0 auto;
+  max-width: 100%; }
+
 .carousel {
   width: 612px;
   height: 612px;
@@ -10,6 +18,25 @@ body {
   position: relative;
   margin: 0 auto;
   overflow: hidden; }
+
+.carousel-control {
+  position: absolute;
+  display: flex;
+  top: 70%;
+  left: 0;
+  width: 100%; }
+  .carousel-control .button {
+    width: 50%; }
+    .carousel-control .button a {
+      font-family: 'helvetica', sans-serif;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 1.5em;
+      color: #FAFAFA;
+      padding: 12.5px;
+      background-color: rgba(20, 26, 37, 0.7); }
+  .carousel-control .button:nth-child(2) {
+    text-align: right; }
 
 img {
   max-width: 100%; }
@@ -30,33 +57,36 @@ img {
   100% {
     left: 0; } }
 .slide-in-left {
-  -webkit-animation: slide-in-left 2s forwards;
-  animation: slide-in-left 2s forwards; }
+  -webkit-animation: slide-in-left 1s ease-in-out;
+  animation: slide-in-left 1s fease-in-out; }
 
 @keyframes slide-in-right {
   100% {
     left: 0; } }
 .slide-in-right {
-  -webkit-animation: slide-in-right 2s forwards;
-  animation: slide-in-right 2s forwards; }
+  -webkit-animation: slide-in-right 1s ease-in-out;
+  animation: slide-in-right 1s ease-in-out; }
 
 @keyframes slide-out-left {
   100% {
     left: -100%; } }
 .slide-out-left {
-  -webkit-animation: slide-out-left 2s forwards;
-  animation: slide-out-left 2s forwards; }
+  -webkit-animation: slide-out-left 1s ease-in-out;
+  animation: slide-out-left 1s ease-in-out; }
 
 @keyframes slide-out-right {
   100% {
     left: 100%; } }
 .slide-out-right {
-  -webkit-animation: slide-out-right 2s forwards;
-  animation: slide-out-right 2s forwards; }
+  -webkit-animation: slide-out-right 1s ease-in-out;
+  animation: slide-out-right 1s ease-in-out; }
 
 @media (max-width: 662px) {
-  .carousel {
+  .carousel, .container {
     height: 0;
-    padding-bottom: 100%; } }
+    padding-bottom: 100%; }
+    .carousel .button > a, .container .button > a {
+      font-size: .95em;
+      padding: 8.33333px; } }
 
 /*# sourceMappingURL=carousel.css.map */
