@@ -54,6 +54,19 @@ $(document).ready(function() {
   // Start carousel on page load.
   $('.carousel-images').html( carouselInnerHTML(0) );
 
+
+  function carouselIndicators() {
+    var indicatorDots = '';
+    for (var i = 0; i < totalCarouselImages; i++) {
+      indicatorDots += '<div></div>';
+    }
+    return indicatorDots;
+  }
+
+  // Add carousel indicators.
+  $('.carousel-indicators').html( carouselIndicators() );
+  $('.carousel-indicators > div').eq(0).addClass('active');
+
   /**
   * Depending on advance direction, get index for generating the next set of    * three images.
   *
@@ -73,6 +86,10 @@ $(document).ready(function() {
       nextIndex = currentActiveIndex === 0 ? totalCarouselImages - 1 : currentActiveIndex - 1;
     }
 
+    $('.carousel-indicators > div').eq(currentActiveIndex).removeClass('active');
+
+    $('.carousel-indicators > div').eq(nextIndex).addClass('active');
+
     return nextIndex;
   }
 
@@ -83,8 +100,9 @@ $(document).ready(function() {
     $('.img-right').addClass('slide-in-left');
 
     // Wait for CSS animation to end, before getting new images.
+    var updateCarousel = nextThree('right');
     $('.slide-out-left').on('animationend', function() {
-      $('.carousel-images').html( carouselInnerHTML( nextThree('right') ) );
+      $('.carousel-images').html( carouselInnerHTML( updateCarousel ) );
       $('.advance-right').bind('click', advanceRight);
     });
   }
@@ -95,8 +113,9 @@ $(document).ready(function() {
     $('.img-active').addClass('slide-out-right');
     $('.img-left').addClass('slide-in-right');
 
+    var updateCarousel = nextThree('left');
     $('.slide-out-right').on('animationend', function() {
-      $('.carousel-images').html( carouselInnerHTML( nextThree('left') ) );
+      $('.carousel-images').html( carouselInnerHTML( updateCarousel ) );
       $('.advance-left').bind('click', advanceLeft);
     });
   }

@@ -73,7 +73,7 @@ body {
   }
 }
 
-.carousel-dots {
+.carousel-indicators {
   position: absolute;
   bottom: 5%;
   left: 25%;
@@ -90,6 +90,11 @@ body {
     &:hover {
       cursor: pointer;
     }
+  }
+
+  div.active {
+    background-color: $white;
+    border: 2px solid $text-background;
   }
 }
 

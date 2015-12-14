@@ -48,20 +48,23 @@ body {
     .carousel-control .button:nth-child(2) {
       text-align: right; }
 
-.carousel-dots {
+.carousel-indicators {
   position: absolute;
   bottom: 5%;
   left: 25%;
   width: 50%;
   display: flex; }
-  .carousel-dots div {
+  .carousel-indicators div {
     border: 1px solid #FAFAFA;
     background-color: rgba(20, 26, 37, 0.7);
     height: 15px;
     width: 15px;
     margin: 0 auto; }
-    .carousel-dots div:hover {
+    .carousel-indicators div:hover {
       cursor: pointer; }
+  .carousel-indicators div.active {
+    background-color: #FAFAFA;
+    border: 2px solid rgba(20, 26, 37, 0.7); }
 
 @keyframes slide-in-left {
   100% {
