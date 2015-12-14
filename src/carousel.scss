@@ -99,46 +99,54 @@ body {
 }
 
 @keyframes slide-in-left {
-   100% { left: 0; }
+  100% {
+    left: 0;
+  }
 }
 
 .slide-in-left {
   -webkit-animation: slide-in-left 1s ease-in-out;
+  -moz-animation: slide-in-left 1s ease-in-out;
   animation: slide-in-left 1s fease-in-out;
 }
 
 @keyframes slide-in-right {
-   100% { left: 0; }
+  100% {
+    left: 0;
+  }
 }
 
 .slide-in-right {
   -webkit-animation: slide-in-right 1s ease-in-out;
+  -moz-animation: slide-in-right 1s ease-in-out;
   animation: slide-in-right 1s ease-in-out;
 }
 
 @keyframes slide-out-left {
   100% {
     left: -100%;
-    filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
   }
 }
 
 .slide-out-left {
   -webkit-animation: slide-out-left 1s ease-in-out;
+  -moz-animation: slide-out-left 1s ease-in-out;
   animation: slide-out-left 1s ease-in-out;
 }
 
 @keyframes slide-out-right {
   100% {
     left: 100%;
-    filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
   }
 }
 
 .slide-out-right {
   -webkit-animation: slide-out-right 1s ease-in-out;
+  -moz-animation: slide-out-right 1s ease-in-out;
   animation: slide-out-right 1s ease-in-out;
 }
 

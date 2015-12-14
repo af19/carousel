@@ -1,6 +1,3 @@
-// $("img").on("swipe",function(){
-//   $(this).hide();
-// });
 $(document).ready(function() {
 
   // Image collection.
@@ -54,7 +51,11 @@ $(document).ready(function() {
   // Start carousel on page load.
   $('.carousel-images').html( carouselInnerHTML(0) );
 
-
+  /**
+  * Get indicators based on size of image collection.
+  *
+  * @return {String} indicatorDots
+  */
   function carouselIndicators() {
     var indicatorDots = '';
     for (var i = 0; i < totalCarouselImages; i++) {
@@ -63,7 +64,7 @@ $(document).ready(function() {
     return indicatorDots;
   }
 
-  // Add carousel indicators.
+  // Draw carousel indicators.
   $('.carousel-indicators').html( carouselIndicators() );
   $('.carousel-indicators > div').eq(0).addClass('active');
 
@@ -92,9 +93,17 @@ $(document).ready(function() {
     return nextIndex;
   }
 
+  // Attach events to Left and Right buttons.
+  function rightLeftHandler() {
+    $('.advance-right').bind('click', advanceRight);
+    $('.advance-left').bind('click', advanceLeft);
+  }
+
+  rightLeftHandler();
+
   // Advancing slides right.
   function advanceRight() {
-    $('.advance-right').unbind('click');
+    $('.advance-right, .advance-left').unbind('click');
     $('.img-active').addClass('slide-out-left');
     $('.img-right').addClass('slide-in-left');
 
@@ -102,41 +111,38 @@ $(document).ready(function() {
     var updateCarousel = nextThree('right');
     $('.slide-out-left').on('animationend', function() {
       $('.carousel-images').html( carouselInnerHTML( updateCarousel ) );
-      $('.advance-right').bind('click', advanceRight);
+      rightLeftHandler();
     });
   }
 
   // Advance Left.
   function advanceLeft() {
-    $('.advance-left').unbind('click');
+    $('.advance-left, .advance-right').unbind('click');
     $('.img-active').addClass('slide-out-right');
     $('.img-left').addClass('slide-in-right');
 
     var updateCarousel = nextThree('left');
     $('.slide-out-right').on('animationend', function() {
       $('.carousel-images').html( carouselInnerHTML( updateCarousel ) );
-      $('.advance-left').bind('click', advanceLeft);
+      rightLeftHandler();
     });
   }
 
-  $('.advance-right').bind('click', advanceRight);
-  $('.advance-left').bind('click', advanceLeft);
-
-
+  // Use indicators to jump between slides.
   $('.carousel-indicators > div').click(function() {
     $('.carousel-indicators').find('.active').removeClass();
     $(this).addClass('active');
     $('.carousel-images').html( carouselInnerHTML( $(this).index() ));
   });
 
+  // Auto change slides every 3 seconds. Stop timer on hover.
   var autoAdvance = setInterval(advanceRight, 3000);
-
   $('.carousel-container').hover(
     function() {
       clearInterval(autoAdvance);
     }, function() {
       autoAdvance = setInterval(advanceRight, 3000);
-  }
-);
+    }
+  );
 
 });
