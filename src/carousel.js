@@ -6,10 +6,7 @@ $(document).ready(function() {
   // Image collection.
   var carouselImages = [
     "src/img/img1.jpg",
-    "src/img/img2.jpg",
-    "src/img/img3.jpg",
-    "src/img/img4.jpg",
-    "src/img/img5.jpg"
+
   ];
 
   var totalCarouselImages = carouselImages.length;
@@ -53,36 +50,45 @@ $(document).ready(function() {
   // Start carousel on page load.
   $('.carousel').html( carouselInnerHTML(0) );
 
-  function advanceRight() {
+  function nextThree(advanceDirection) {
+
     var currentActiveIndex = $('.img-active').data('active-index');
-    console.log(currentActiveIndex);
-    var nextIndex = currentActiveIndex === totalCarouselImages - 1 ? 0 : currentActiveIndex + 1;
+    var nextIndex;
+
+    if (advanceDirection === 'right') {
+      nextIndex = currentActiveIndex === totalCarouselImages - 1 ? 0 : currentActiveIndex + 1;
+    }
+
+    if (advanceDirection === 'left') {
+      nextIndex = currentActiveIndex === 0 ? totalCarouselImages - 1 : currentActiveIndex - 1;
+    }
+
+    return nextIndex;
+  }
+
+  function advanceRight() {
     $('.advance-right').unbind('click');
     $('.img-active').addClass('slide-out-left');
     $('.img-right').addClass('slide-in-left');
 
     $('.slide-out-left').on('animationend', function() {
-      $('.carousel').html( carouselInnerHTML(nextIndex) );
+      $('.carousel').html( carouselInnerHTML( nextThree('right') ) );
       $('.advance-right').bind('click', advanceRight);
     });
   }
-  $('.advance-right').bind('click', advanceRight);
 
   function advanceLeft() {
-    var currentActiveIndex = $('.img-active').data('active-index');
-    console.log(currentActiveIndex);
-    var nextIndex = currentActiveIndex === 0 ? totalCarouselImages - 1 : currentActiveIndex - 1;
-    console.log(nextIndex);
     $('.advance-left').unbind('click');
     $('.img-active').addClass('slide-out-right');
     $('.img-left').addClass('slide-in-right');
 
     $('.slide-out-right').on('animationend', function() {
-      $('.carousel').html( carouselInnerHTML(nextIndex) );
+      $('.carousel').html( carouselInnerHTML( nextThree('left') ) );
       $('.advance-left').bind('click', advanceLeft);
     });
   }
 
+  $('.advance-right').bind('click', advanceRight);
   $('.advance-left').bind('click', advanceLeft);
 
 
